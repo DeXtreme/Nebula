@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-
+    'students'
 ]
 
 MIDDLEWARE = [
@@ -91,6 +91,15 @@ DATABASES = {
         "HOST" : os.getenv("POSTGRES_HOST"),
     }
 }
+
+
+# DRF
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [],
+    'DEFAULT_PERMISSON_CLASSES': []
+}
+
 
 # CORS
 CORS_ALLOW_ALL_ORIGINS = True
