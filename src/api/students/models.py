@@ -16,3 +16,16 @@ class Student(models.Model):
 
     def __str__(self):
         return f"Student|{self.id}|{self.name}"
+
+
+class WeeklyAttendance(models.Model):
+   """Model for weekly attendance"""
+   
+   student = models.ForeignKey(Student,on_delete=models.CASCADE,related_name='weekly_attendance')
+   week = models.CharField(max_length=255)
+   present = models.IntegerField()
+   absent = models.IntegerField()
+   
+   
+   def __str__(self):
+       return f"Week|{self.week}|{self.student}"
