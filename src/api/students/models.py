@@ -4,8 +4,8 @@ from django.db import models
 class Student(models.Model):
     """Model for student data"""
 
-    cohorts = [("Cohort 1", "Cohort 1"),
-               ("Cohort 2", "Cohort 2")]
+    cohorts = [("Cohort1", "Cohort1"),
+               ("Cohort2", "Cohort2")]
 
     name = models.CharField(max_length=255)
     email = models.EmailField()

@@ -12,3 +12,8 @@ class StudentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Student
         fields = '__all__'
+
+class CohortStatsSerializer(serializers.Serializer):
+    attendance_average = serializers.FloatField()
+    assignment_completion = serializers.FloatField()
+    total_students = serializers.IntegerField()

@@ -14,14 +14,14 @@ class StudentsTestCase(APITestCase):
                                                attendance_average=1,
                                                assignment_completion=3,
                                                ranking=1,
-                                               cohort="Cohort 1")
+                                               cohort="Cohort1")
 
         cls.student_2 = Student.objects.create(name="test2",
                                                email="test2@gmail.com",
                                                attendance_average=1,
                                                assignment_completion=3,
                                                ranking=1,
-                                               cohort="Cohort 2")
+                                               cohort="Cohort2")
 
         cls.week_1 = WeeklyAttendance.objects.create(student=cls.student_1,
                                                      week="Week 1",
@@ -65,3 +65,16 @@ class StudentsTestCase(APITestCase):
         self.assertIn("ranking", json)
         self.assertIn("cohort", json)
         self.assertIn("weeklyAttendance", json)
+
+    
+    def test_get_cohort(self):
+        url = reverse("cohort-detail", args=["Cohort1"])
+
+        response = self.client.get(url)
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        json = response.json()
+        
+        self.assertIn("attendance_average", json)
+        self.assertIn("assignment_completion", json)
+        self.assertIn("total_students", json)
