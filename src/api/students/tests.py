@@ -78,3 +78,14 @@ class StudentsTestCase(APITestCase):
         self.assertIn("attendance_average", json)
         self.assertIn("assignment_completion", json)
         self.assertIn("total_students", json)
+    
+    def test_get_cohort_attendance(self):
+        url = reverse("cohort-attendance", args=["Cohort1"])
+
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        json = response.json()
+
+        self.assertIn("week", json[0])
+        self.assertIn("attendanceAverage", json[0])
+        

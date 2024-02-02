@@ -17,3 +17,8 @@ class CohortStatsSerializer(serializers.Serializer):
     attendance_average = serializers.FloatField()
     assignment_completion = serializers.FloatField()
     total_students = serializers.IntegerField()
+
+
+class CohortAttendanceSerializer(serializers.Serializer):
+    week = serializers.CharField()
+    attendanceAverage = serializers.FloatField()

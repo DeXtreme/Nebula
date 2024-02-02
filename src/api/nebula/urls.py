@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, re_path
 
 from nebula.views import healthcheck, test_db_connection
-from students.views import students, get_student, get_cohort
+from students.views import students, get_student, get_cohort, get_cohort_attendance
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,5 +26,7 @@ urlpatterns = [
     path('api/students', students, name="students-list"),
     re_path(
         r'api/student/(?P<email>.+@.+\.[a-z]{3})', get_student, name="students-detail"),
-    path('api/cohort/stats/<str:cohort_name>', get_cohort, name="cohort-detail")
+    path('api/cohort/stats/<str:cohort_name>',
+         get_cohort, name="cohort-detail"),
+    path('api/cohort/attendance/<str:cohort_name>',get_cohort_attendance, name="cohort-attendance")
 ]
