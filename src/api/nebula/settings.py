@@ -26,11 +26,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DEBUG = os.getenv("DEBUG","false").lower() == "true"
 
 # SECURITY WARNING: keep the secret key used in production secret!
-if DEBUG:
-    SECRET_KEY = os.getenv("SECRET_KEY")
-else:
-    client = boto3.client('secretsmanager')
-    SECRET_KEY = client.get_secret_value(SecretId="SECRET_KEY")
+
+SECRET_KEY = os.getenv("SECRET_KEY")
+
 
 ALLOWED_HOSTS = ["*"]
 
