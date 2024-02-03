@@ -14,6 +14,7 @@ services:
       - .env/db.env
     command: >
       sh -c "python manage.py migrate
+      && python manage.py loaddata students
       && python manage.py runserver 0.0.0.0:80"
     depends_on:
       - db

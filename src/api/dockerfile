@@ -10,4 +10,4 @@ COPY ./ ./
 
 EXPOSE 80
 
-CMD python manage.py migrate && gunicorn -b 0.0.0.0:80 nebula.wsgi:application 
+CMD python manage.py migrate && python manage.py loaddata students && gunicorn -b 0.0.0.0:80 nebula.wsgi:application
